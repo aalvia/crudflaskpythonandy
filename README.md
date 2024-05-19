@@ -25,3 +25,10 @@
 <p>
 Muchas gracias por tu apoyo.
 </p>
+
+# nota de andy para ejecutar en el terminal 
+# .\env\Scripts\Activate
+# $env:FLASK_APP = "app.app"
+# $env:FLASK_ENV = "development"
+# flask run
+

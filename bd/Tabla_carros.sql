@@ -32,6 +32,8 @@ CREATE TABLE `carros` (
   `marca` varchar(45) NOT NULL,
   `modelo` varchar(45) NOT NULL,
   `year` varchar(45) NOT NULL,
+  `displacement` varchar(45) NOT NULL,
+  `speed` varchar(45) NOT NULL,
   `color` varchar(45) NOT NULL,
   `puertas` varchar(45) NOT NULL,
   `favorito` varchar(45) NOT NULL,
@@ -42,13 +44,13 @@ CREATE TABLE `carros` (
 -- Volcado de datos para la tabla `carros`
 --
 
-INSERT INTO `carros` (`id`, `marca`, `modelo`, `year`, `color`, `puertas`, `favorito`, `foto`) VALUES
-(1, 'BMW', 'BMW X7', '2022', 'Gris', '4', 'Si', 'bmw_2022.jpg'),
-(2, 'Ford', 'CAMIONETA', '2022', 'Blanco', '4', 'Si', 'ford_camioneta_2020.webp'),
-(3, 'Chevrolet', 'Onix Turbo', '2013', 'Blanco', '2', 'No', 'chevrolet.webp'),
-(7, 'Toyota', 'Avalon', '2018', 'Gris', '2', 'No', 'toyota_corolla.webp'),
-(8, 'Chevrolet', 'Joy HB', '2015', 'Rojo', '4', 'Si', ''),
-(10, 'Mercedes-Benz', 'CLA Coupé', '2022', 'Blanco', '4', 'Si', 'CLA_Coupe.jpg');
+INSERT INTO `carros` (`id`, `marca`, `modelo`, `year`,`displacement`,`speed`, `color`, `puertas`, `favorito`, `foto`) VALUES
+(1, 'BMW', 'BMW X7', '2022','2000','200 km/h', 'Gris', '4', 'Si', 'bmw_2022.jpg'),
+(2, 'Ford', 'CAMIONETA', '2022','2000','200 km/h', 'Blanco', '4', 'Si', 'ford_camioneta_2020.webp'),
+(3, 'Chevrolet', 'Onix Turbo', '2013','2000','200 km/h', 'Blanco', '2', 'No', 'chevrolet.webp'),
+(7, 'Toyota', 'Avalon', '2018','2000','200 km/h', 'Gris', '2', 'No', 'toyota_corolla.webp'),
+(8, 'Chevrolet', 'Joy HB', '2015','2000','200 km/h', 'Rojo', '4', 'Si', ''),
+(10, 'Mercedes-Benz', 'CLA Coupé', '2022','2000','200 km/h', 'Blanco', '4', 'Si', 'CLA_Coupe.jpg');
 
 --
 -- Índices para tablas volcadas

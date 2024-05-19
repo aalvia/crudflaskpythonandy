@@ -2,7 +2,6 @@ from random import sample
 from conexionBD import *  #Importando conexion BD
 
 
-
 #Creando una funcion para obtener la lista de carros.
 def listaCarros():
     conexion_MySQLdb = connectionBD() #creando mi instancia a la conexion de BD
@@ -30,12 +29,13 @@ def updateCarro(id=''):
     
     
     
-def registrarCarro(marca='', modelo='', year='', color='', puertas='', favorito='', nuevoNombreFile=''):       
+def registrarCarro(marca='', modelo='', year='', displacement='', speed='', color='', puertas='', favorito='', nuevoNombreFile=''):       
+        print("Valores recibidos:", marca, modelo, year, displacement, speed, color, puertas, favorito, nuevoNombreFile)
         conexion_MySQLdb = connectionBD()
         cursor           = conexion_MySQLdb.cursor(dictionary=True)
             
-        sql         = ("INSERT INTO carros(marca, modelo, year, color, puertas, favorito, foto) VALUES (%s, %s, %s, %s, %s, %s, %s)")
-        valores     = (marca, modelo, year, color, puertas, favorito, nuevoNombreFile)
+        sql         = ("INSERT INTO carros(marca, modelo, year, displacement, speed, color, puertas, favorito, foto) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
+        valores     = (marca, modelo, year, displacement, f"{speed} km/h", color, puertas, favorito, nuevoNombreFile)
         cursor.execute(sql, valores)
         conexion_MySQLdb.commit()
         cursor.close() #Cerrando conexion SQL
@@ -59,7 +59,7 @@ def detallesdelCarro(idCarro):
     
     
 
-def  recibeActualizarCarro(marca, modelo, year, color, puertas, favorito, nuevoNombreFile, idCarro):
+def  recibeActualizarCarro(marca, modelo, year, displacement, speed, color, puertas, favorito, nuevoNombreFile, idCarro):
         conexion_MySQLdb = connectionBD()
         cur = conexion_MySQLdb.cursor(dictionary=True)
         cur.execute("""
@@ -68,12 +68,14 @@ def  recibeActualizarCarro(marca, modelo, year, color, puertas, favorito, nuevoN
                 marca   = %s,
                 modelo  = %s,
                 year    = %s,
+                displacement = %s,
+                speed    = %s,
                 color   = %s,
                 puertas = %s,
                 favorito= %s,
                 foto    = %s
             WHERE id=%s
-            """, (marca,modelo, year, color, puertas, favorito, nuevoNombreFile,  idCarro))
+            """, (marca,modelo, year, displacement, speed, color, puertas, favorito, nuevoNombreFile,  idCarro))
         conexion_MySQLdb.commit()
         
         cur.close() #cerrando conexion de la consulta sql

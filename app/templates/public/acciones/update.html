@@ -48,6 +48,40 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col">
+                <label for="displacement">Cilindraje</label>
+                <select name="displacement" class="form-control" required>
+                    {% for displacement in range(1000, 4000, 100) %}
+                        {% set displacement_str = displacement|string %}
+                        {% if(displacement_str  == dataInfo.displacement) %}
+                            <option value="{{ displacement }}" selected>{{ displacement }} cc</option>
+                        {% else %}
+                            <option value="{{ displacement }}">{{ displacement }} cc</option>
+                        {% endif %}    
+                    {% endfor %}
+                </select>
+            </div>
+            
+          
+    <div class="col">
+        <label for="velocidad">Velocidad</label>
+        {% with velocidades = ["60 km/h", "80 km/h", "100 km/h", "120 km/h", "140 km/h", "160 km/h", "180 km/h", "200 km/h", "220 km/h", "240 km/h", "260 km/h", "280 km/h", "300 km/h"] %}
+        <select name="speed" class="form-control">
+          
+            {% for speed in velocidades %}
+                {% if speed == dataInfo.speed %}
+                    <option value="{{ speed }}" selected>{{ speed }}</option>
+                {% else %}
+                    <option value="{{ speed }}">{{ speed }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        {% endwith %}
+    </div>
+            
+        </div>
+
         
         <div class="row">
             <div class="col">

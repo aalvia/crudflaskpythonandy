@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+
 from controller.controllerCarro import *
 
 
@@ -9,6 +10,7 @@ from werkzeug.utils import secure_filename
 
 #Declarando nombre de la aplicación e inicializando, crear la aplicación Flask
 app = Flask(__name__)
+app.config['DEBUG'] = True 
 application = app
 
 msg  =''
@@ -35,6 +37,8 @@ def formAddCarro():
         marca               = request.form['marca']
         modelo              = request.form['modelo']
         year                = request.form['year']
+        displacement        = request.form['displacement']
+        speed               = request.form['speed']
         color               = request.form['color']
         puertas             = request.form['puertas']
         favorito            = request.form['favorito']
@@ -43,7 +47,7 @@ def formAddCarro():
         if(request.files['foto'] !=''):
             file     = request.files['foto'] #recibiendo el archivo
             nuevoNombreFile = recibeFoto(file) #Llamado la funcion que procesa la imagen
-            resultData = registrarCarro(marca, modelo, year, color, puertas, favorito, nuevoNombreFile)
+            resultData = registrarCarro(marca, modelo, year, displacement, speed, color, puertas, favorito, nuevoNombreFile)
             if(resultData ==1):
                 return render_template('public/layout.html', miData = listaCarros(), msg='El Registro fue un éxito', tipo=1)
             else:
@@ -85,6 +89,8 @@ def  formActualizarCarro(idCarro):
         marca           = request.form['marca']
         modelo          = request.form['modelo']
         year            = request.form['year']
+        displacement    = request.form['displacement']
+        speed           = request.form['speed']
         color           = request.form['color']
         puertas         = request.form['puertas']
         favorito        = request.form['favorito']
@@ -93,10 +99,10 @@ def  formActualizarCarro(idCarro):
         if(request.files['foto']):
             file     = request.files['foto']
             fotoForm = recibeFoto(file)
-            resultData = recibeActualizarCarro(marca, modelo, year, color, puertas, favorito, fotoForm, idCarro)
+            resultData = recibeActualizarCarro(marca, modelo, year, displacement, speed, color, puertas, favorito, fotoForm, idCarro)
         else:
             fotoCarro  ='sin_foto.jpg'
-            resultData = recibeActualizarCarro(marca, modelo, year, color, puertas, favorito, fotoCarro, idCarro)
+            resultData = recibeActualizarCarro(marca, modelo, year, displacement, speed, color, puertas, favorito, fotoCarro, idCarro)
 
         if(resultData ==1):
             return render_template('public/layout.html', miData = listaCarros(), msg='Datos del carro actualizados', tipo=1)

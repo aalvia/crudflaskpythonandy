@@ -44,6 +44,28 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <label for="displacement">Cilindraje</label>
+                <select name="displacement" class="form-control" required>
+                    <option value="">--- Seleccione el cilindraje ---</option>
+                    {% for cilindraje in range(1000, 4000, 100) %}
+                        <option value="{{ cilindraje }}">{{ cilindraje }} cc</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="col">
+                <label for="speed">Velocidad</label>
+                <select name="speed" class="form-control" required>
+                    <option value="">--- Seleccione la Velocidad ---</option>
+                    {% for velocidad in range(50, 301, 10) %}
+                        <option value="{{ velocidad }}">{{ velocidad }} km/h</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+        </div>
 
         <div class="row">
             <div class="col">

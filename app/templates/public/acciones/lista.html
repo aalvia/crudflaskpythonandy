@@ -9,6 +9,9 @@
                 <th scope="col">Marca</th>
                 <th scope="col">Modelo</th>
                 <th scope="col">Año</th>
+                <th scope="col">Color</th>
+                <th scope="col">Cilindraje</th>
+                <th scope="col">Velocidad</th>	
                 <th scope="col">Foto</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -21,6 +24,9 @@
                 <td>{{ carro.marca }}</td>
                 <td>{{ carro.modelo }}</td>
                 <td>{{ carro.year }}</td>
+                <td>{{ carro.color }}</td>
+                <td>{{ carro.displacement }}</td>
+                <td>{{ carro.speed }}</td>
                 <td>
                     {% if(carro.foto !="") %}
                     <img src="{{ urlCarro }}{{ carro.foto }}" class="sin_foto_mini" alt="{{ carro.marca }}">
